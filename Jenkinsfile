@@ -7,11 +7,6 @@ pipeline {
                git branch: 'main', url: 'https://github.com/Chakrinitesh/EKS-Terraform.git'
             }
         }
-         stage('install-venv') {
-            steps {
-               sh 'sudo su install python3.14-venv'
-            }
-        }
         stage('checkov-scan') {
             steps {
                 sh ''' 
