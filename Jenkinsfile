@@ -9,7 +9,7 @@ pipeline {
         }
          stage('install-venv') {
             steps {
-               sh 'apt install python3.14-venv'
+               sh 'sudo su install python3.14-venv'
             }
         }
         stage('checkov-scan') {
