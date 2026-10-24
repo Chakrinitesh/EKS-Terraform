@@ -10,6 +10,7 @@ pipeline {
         stage('checkov-scan') {
             steps {
                 sh ''' 
+                     apt install python3.14-venv
                      python3 -m venv venv
                     ./venv/bin/pip install --upgrade pip
                     ./venv/bin/pip install checkov
