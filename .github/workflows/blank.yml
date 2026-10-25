@@ -31,7 +31,7 @@ jobs:
           
       - name: Upload Scan Results JSON
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: checkov-report
           path: results.json
