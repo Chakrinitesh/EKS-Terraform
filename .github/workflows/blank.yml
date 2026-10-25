@@ -29,15 +29,16 @@ jobs:
           directory: .
           framework: terraform
           output_format: json
-          output_file_path: console,result.json
+          output_file_path: result.json checkov-reports/
           log_level: WARNING
           container_user: 1000
           soft_fail: true
 
-      - name: Upload Checkov json report
-        uses: actions/upload-artifact@v4
+      - name: Upload Scan Results JSON
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          sarif_file: result.json
+          name: checkov-report
+          path: checkov-reports/results_json.json
 
 
