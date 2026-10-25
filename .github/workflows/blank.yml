@@ -1,0 +1,19 @@
+name: checkov-scan
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@main
+        with:
+            output_format: json
+            output_file_path: result.json
+    
