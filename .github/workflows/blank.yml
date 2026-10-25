@@ -18,10 +18,9 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           file: main.tf
-          framework: terraform
           output_format: json
           output_file_path: result.json
-          
+
       - name: Upload Scan Results JSON
         if: always() # Ensures the report is uploaded even if Checkov finds security vulnerabilities
         uses: actions/upload-artifact@v4
