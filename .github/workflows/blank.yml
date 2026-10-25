@@ -14,12 +14,29 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
+      # Remove a single specific file
+      - name: Remove a file
+        run: rm -f path/to/your/file.txt
+
+      # Remove a folder and its contents recursively
+      - name: Remove a directory
+        run: rm -rf path/to/your/folder/
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Checkov
+        run: pip install --no-cache-dir checkov
+
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@master
         with:
           file: main.tf
           output_format: cli,sarif
-          output_file_path: /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif         
+          output_file_path: /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif   
+          
     
       - name: Upload Scan Results JSON
         if: always()
