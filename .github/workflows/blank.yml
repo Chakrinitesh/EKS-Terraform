@@ -1,4 +1,5 @@
 name: checkov-scan
+
 on:
   push:
     branches: [ "main" ]
@@ -16,7 +17,13 @@ jobs:
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@master
         with:
-            file: main.tf
-            output_format: json
-            output_file_path: result.json
-    
+          file: main.tf
+          output_format: json
+          output_file_path: result.json
+          
+      - name: Upload Scan Results JSON
+        if: always() # Ensures the report is uploaded even if Checkov finds security vulnerabilities
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkov-report
+          path: result.json
