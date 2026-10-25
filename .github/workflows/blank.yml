@@ -39,6 +39,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: checkov-report
-          path: checkov-reports/results_json.json
+          path: checkov-reports/results.json
 
 
