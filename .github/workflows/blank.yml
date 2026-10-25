@@ -19,11 +19,11 @@ jobs:
         with:
           file: main.tf
           output_format: json
-          output_file_path: result.json
+          output_file_path: /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/result.json
           
       - name: Upload Scan Results JSON
         if: always()
         uses: actions/upload-artifact@v6
         with:
           name: checkov-report
-          path: results.json
+          path: result.json
