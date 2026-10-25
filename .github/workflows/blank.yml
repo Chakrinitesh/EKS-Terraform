@@ -18,12 +18,13 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           file: main.tf
+          mkdir: -p output 
           output_format: json
-          output_file_path: result.json
+          output_file_path: result.json output/
 
       - name: Upload Scan Results JSON
         if: always() # Ensures the report is uploaded even if Checkov finds security vulnerabilities
         uses: actions/upload-artifact@v6
         with:
           name: checkov-report
-          path: result.json
+          path: output/result.json
