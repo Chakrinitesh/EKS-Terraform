@@ -25,14 +25,13 @@ jobs:
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          mkdir: -p output
           file: main.tf
           output_format: json
-          output_file_path: result.json output/
+          output_file_path: result.json
           
       - name: Upload Scan Results JSON
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: checkov-report
-          path: output/results.json
+          path: results.json
