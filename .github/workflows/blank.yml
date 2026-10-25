@@ -40,7 +40,7 @@ jobs:
     
       - name: Upload Scan Results JSON
         if: always()
-        uses: github/codeql-action/upload-sarif@v5
+        uses: github/codeql-action/upload-sarif@v4
         with:
           name: checkov-report
           path: results.sarif
