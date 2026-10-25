@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run Checkov
         id: checkov
@@ -35,7 +35,7 @@ jobs:
           soft_fail: true
 
       - name: Upload Checkov SARIF report
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v5
         if: always()
         with:
           sarif_file: results.sarif
