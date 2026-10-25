@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@master
@@ -23,7 +23,7 @@ jobs:
 
       - name: Upload Scan Results JSON
         if: always() # Ensures the report is uploaded even if Checkov finds security vulnerabilities
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: checkov-report
           path: result.json
