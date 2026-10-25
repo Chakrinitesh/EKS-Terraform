@@ -29,9 +29,3 @@ jobs:
           file: main.tf
           output_format: json
           output_file_path: result.json output/
-
-      - name: Upload Scan Results JSON
-        uses: actions/upload-artifact@v6
-        with:
-          name: checkov-report
-          path: output/result.json
