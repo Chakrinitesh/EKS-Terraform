@@ -16,11 +16,14 @@ jobs:
 
       # Remove a single specific file
       - name: Remove a file
-        run: sudo rm -f /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif 
+        run: | 
+            sudo rm -f home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif/results_sarif.sarif 
+  
 
       # Remove a folder and its contents recursively
       - name: Remove a directory
-        run: sudo  rm -rf /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif 
+        run: |
+            sudo  rm -rf /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif 
         
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,7 +41,8 @@ jobs:
           file: main.tf
           output_format: sarif
           output_file_path: /home/ubuntu/actions-runner/_work/EKS-Terraform/EKS-Terraform/results.sarif   
-          
+          log_level: WARNING
+          container_user: 1000
     
       - name: Upload Scan Results JSON
         if: always()
