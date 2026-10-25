@@ -29,7 +29,7 @@ jobs:
           directory: .
           framework: terraform
           output_format: json
-          output_file_path: result.json checkov-reports/
+          output_file_path: result.json 
           log_level: WARNING
           container_user: 1000
           soft_fail: true
