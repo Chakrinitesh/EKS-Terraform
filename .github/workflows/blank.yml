@@ -31,7 +31,6 @@ jobs:
           output_file_path: result.json output/
 
       - name: Upload Scan Results JSON
-        if: always() # Ensures the report is uploaded even if Checkov finds security vulnerabilities
         uses: actions/upload-artifact@v6
         with:
           name: checkov-report
